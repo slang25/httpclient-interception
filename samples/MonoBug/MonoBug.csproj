@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" PrivateAssets="All" />
+    <PackageReference Include="JustEat.HttpClientInterception" Version="2.0.1" />
+
+    <!-- Works -->
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <!-- Doesn't work -->
+    <!-- <PackageReference Include="Newtonsoft.Json" Version="12.0.2" /> -->
+  </ItemGroup>
+  <ItemGroup>
+    <!--
+    As Mono has no proper AppDomain, we prevent it on Mono.
+    This works around Xunit's fatal error on Mono.
+    -->
+    <Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
